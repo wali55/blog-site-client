@@ -1,9 +1,15 @@
-import { Button } from "@/components/ui/button";
+import BlogCard from "@/components/modules/homepage/BlogCard";
+import { blogPostService } from "@/services/blog.service";
+import { BlogPost } from "@/types";
 
-export default function Home() {
+export default async function Home() {
+  const {data} = await blogPostService.getPosts();
+  
   return (
-    <div>
-      <Button>Click here</Button>
+    <div className="max-w-7xl grid grid-cols-3 gap-5 mx-auto mt-4">
+      {data?.data?.map((post: BlogPost) => (
+        <BlogCard key={post.id} post={post} />
+      ))}
     </div>
   );
 }
