@@ -8,7 +8,7 @@ export async function proxy(request: NextRequest) {
   let isAuthenticated = false;
   let isAdmin = false;
 
-  if (data) {
+  if (data && data.user.role) {
     isAuthenticated = true;
     isAdmin = data.user.role === Roles.Admin;
   }

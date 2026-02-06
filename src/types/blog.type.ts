@@ -10,3 +10,10 @@ export type BlogPost = {
   };
   isFeatured?: boolean;
 };
+
+export type CreateBlogPost = {
+  title: string;
+  content: string;
+  tags?: string[];
+};
+
